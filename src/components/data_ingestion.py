@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 import mysql.connector
 from mysql.connector import Error
 from src.utils import create_server_connection, create_db_connection, read_query
+from src.components.data_transformation import DataTransformation, DataTransformationConfig
 
 from dataclasses import dataclass
 
@@ -71,4 +72,7 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+
+    preprocessor = DataTransformation()
+    preprocessor.initiate_data_transformation(train_data, test_data)
