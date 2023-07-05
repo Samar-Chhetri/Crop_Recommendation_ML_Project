@@ -9,6 +9,7 @@ import mysql.connector
 from mysql.connector import Error
 from src.utils import create_server_connection, create_db_connection, read_query
 from src.components.data_transformation import DataTransformation, DataTransformationConfig
+from src.components.model_trainer import ModelTrainer, ModelTrainerConfig
 
 from dataclasses import dataclass
 
@@ -75,4 +76,8 @@ if __name__=="__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     preprocessor = DataTransformation()
-    preprocessor.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr,_ = preprocessor.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer = ModelTrainer()
+    acc_sco = modeltrainer.initiate_model_trainer(train_arr, test_arr)
+    print(acc_sco)
