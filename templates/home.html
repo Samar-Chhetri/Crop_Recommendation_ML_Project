@@ -1,0 +1,70 @@
+<html lang="en">
+<body>
+    <div class="login">
+        <h1> 🌱🌱Crop Recommendation System 🌱🌱</h1>
+
+        <form action="{{ url_for('predict_crop')}}" method="post">
+            <h2>
+                <legend> Please Fill the Form Below:</legend>
+            </h2>
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Nitrogen Content in Soil</label>
+                <input class="form-control" type ="number" name="N" placeholer="Enter Nitrogen content" min="0" max="150" required/>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Phosphorus Content in Soil</label>
+                <input class="form-control" type ="number" name="P" placeholer="Enter Phosphorus content" min="5" max="150" required/>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Potassium Content in Soil</label>
+                <input class="form-control" type ="number" name="K" placeholer="Enter Potassium content" min="5" max="205" required/>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Temperature (in celsius) </label>
+                <input class="form-control" type ="number" name="temperature" placeholer="Enter temperature" min="8" max="45" required/>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Humidity (in %) </label>
+                <input class="form-control" type ="number" name="humidity" placeholer="Enter humidity" min="14" max="100" required/>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Ph Value of Soil</label>
+                <input class="form-control" type ="number" name="ph" placeholer="Enter ph" min="3" max="10" required/>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Rainfall (in mm) </label>
+                <input class="form-control" type ="number" name="rainfall" placeholer="Enter rainfall" min="20" max="300" required/>
+            </div>
+
+           
+
+            <div class="mb-3">
+                <input class="btn btn-primary" type ="submit" value="Get Recommemded Crop" required />
+    
+            </div>
+        </form>
+
+        <h2>
+
+            Result : The Recommended Crop is {{results}}
+        </h2>
+    </body>
+</html>
